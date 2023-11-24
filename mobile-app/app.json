@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "mml-app",
+    "slug": "mml-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/mml.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/mml.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/mml.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.ngalande.mmlapp"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fcd95776-2837-4634-9023-d5db61db6f7e"
+      }
+    }
+  }
+}
