@@ -1,0 +1,46 @@
+  // useEffect(()=>{
+  //   // fetch("https://mml-backend.vercel.app/getalltransactions")
+  //   // .then(response =>response.json())
+  //   // .then(data =>{
+  //   //     //set transaction data
+  //   //     setAllTransactions(data.data)
+  //   //     console.log("Transaction Data:",data.data)
+
+  //   //     //set buyerID
+  //   //     setBuyerID(data.data.buyerID);
+  //   //     console.log("BuyerID: ", buyerID);
+        
+
+  //   //     //set sellerID
+  //   //     setSellerID(data.data.sellerID);
+  //   //     console.log("SellerID: ", sellerID);
+
+  //     //fetch buyername
+  //       // fetch("https://mml-backend.vercel.app/getuser?uid=92CEqwSysUSktHgBGVMfEWw39YWifmoM")
+  //       // .then(response =>response.json())
+  //       // .then(data =>{
+  //       //   setBuyerName(data.data.name)
+  //       //   console.log("Buyer user data:", data.data)
+  //       //   console.log("BUYER NAME:",buyerName)
+  //       // })      
+  //       // .catch(error=>{
+  //       //   console.log("Theres an error fetching the buyername:", error)
+  //       // })
+
+  //       //fetch sellername
+  //       // fetch("https://mml-backend.vercel.app/getuser?uid=92CEqwSysUSktHgBGVMfEWw39YWifmoM")
+  //       // .then(response =>response.json())
+  //       // .then(data =>{
+  //       //   setSellerName(data.data.name)
+  //       //   console.log("Seller user data:", data.data)
+  //       //   console.log("Seller NAME:",sellerName)
+  //       // })      
+  //       // .catch(error=>{
+  //       //   console.log("Theres an error fetching the buyername:", error)
+  //       // })
+
+  //   // })
+  //   // .catch(error =>{
+  //   //   console.log("Theres an error fetching the transaction:",error)
+  //   // })
+  // }, [])
