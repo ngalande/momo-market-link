@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {requestToPayController, getTransactionStatusController, getAllBuyerTransactionsController, getAllSellerTransactionsController, getActiveTransactionsController, getAllTransactionsController, getMostFrequentLocationController, getDebitedAmountsController, getCreditedAmountController, getCommissionController, assignDeliveryController, getAccountBalanceController, getAllDelivererTransactionsController} = require('../controllers/requestToPay.controller')
+const {requestToPayController, getTransactionStatusController, getAllBuyerTransactionsController, getAllSellerTransactionsController, getActiveTransactionsController, getAllTransactionsController, getMostFrequentLocationController, getDebitedAmountsController, getCreditedAmountController, getCommissionController, assignDeliveryController, getAccountBalanceController, getAllDelivererTransactionsController, getTransactionIDController} = require('../controllers/requestToPay.controller')
 
 router.post('/requesttopay', requestToPayController);
 router.get('/transactionstatus', getTransactionStatusController);
@@ -15,6 +15,7 @@ router.get('/getdebitedamounts', getDebitedAmountsController);
 router.get('/getcommission', getCommissionController);
 router.post('/assigndelivery', assignDeliveryController);
 router.get('/getbalance', getAccountBalanceController);
+router.get('/getransactionid', getTransactionIDController);
 
 
 module.exports = router;

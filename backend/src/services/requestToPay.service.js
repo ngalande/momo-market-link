@@ -307,12 +307,32 @@ async function requestToPay(data){
       const q = query(collection(db, "escrowTransactions"), where("buyerId", "==", uid));
 
       const querySnapshot = await getDocs(q);
+      const escrowTransactions = [];
       if (!querySnapshot.empty) {
-        const escrowTransactions = [];
-        querySnapshot.forEach((doc) => {
-            const { confirmationPin, ...dataWithoutConfirmationPin } = doc.data();
+        for (const docRef of querySnapshot.docs) {
+          const transactionData = docRef.data();
+           // Get seller details
+          const sellerQ = query(collection(db, 'users'), where('uid', '==', transactionData.sellerId));
+          const sellerSnapshot = await getDocs(sellerQ);
+          
+          const sellerData = sellerSnapshot.empty ? {} : sellerSnapshot.docs[0].data();
+
+          // Get buyer details
+          const buyerQ = query(collection(db, 'users'), where('uid', '==', transactionData.buyerId));
+          const buyerSnapshot = await getDocs(buyerQ);
+          const buyerData = buyerSnapshot.empty ? {} : buyerSnapshot.docs[0].data();
+
+          const transactionDetails = {
+            ...transactionData,
+            sellerData: sellerData,
+            buyerData: buyerData,
+          };
+          console.log(transactionDetails)
+          const { confirmationPin, ...dataWithoutConfirmationPin } = transactionDetails;
+            // dataWithoutConfirmationPin.sellerName = ;
             escrowTransactions.push(dataWithoutConfirmationPin);
-        });
+
+        }
         // const transData = querySnapshot.docs.;
         // console.log(userDoc.docs)
         return {status: 200, data: escrowTransactions};
@@ -329,17 +349,34 @@ async function requestToPay(data){
           const q = query(collection(db, "escrowTransactions"), where("sellerId", "==", uid));
     
           const querySnapshot = await getDocs(q);
+          const escrowTransactions = [];
           if (!querySnapshot.empty) {
-            if (!querySnapshot.empty) {
-                const escrowTransactions = [];
-                querySnapshot.forEach((doc) => {
-                    const { confirmationPin, ...dataWithoutConfirmationPin } = doc.data();
-                    escrowTransactions.push(dataWithoutConfirmationPin);
-                });
-                // const transData = querySnapshot.docs.;
-                // console.log(userDoc.docs)
-                return {status: 200, data: escrowTransactions};
+            for (const docRef of querySnapshot.docs) {
+              const transactionData = docRef.data();
+               // Get seller details
+              const sellerQ = query(collection(db, 'users'), where('uid', '==', transactionData.sellerId));
+              const sellerSnapshot = await getDocs(sellerQ);
+              
+              const sellerData = sellerSnapshot.empty ? {} : sellerSnapshot.docs[0].data();
+    
+              // Get buyer details
+              const buyerQ = query(collection(db, 'users'), where('uid', '==', transactionData.buyerId));
+              const buyerSnapshot = await getDocs(buyerQ);
+              const buyerData = buyerSnapshot.empty ? {} : buyerSnapshot.docs[0].data();
+    
+              const transactionDetails = {
+                ...transactionData,
+                sellerData: sellerData,
+                buyerData: buyerData,
+              };
+              console.log(transactionDetails)
+              const { confirmationPin, ...dataWithoutConfirmationPin } = transactionDetails;
+                // dataWithoutConfirmationPin.sellerName = ;
+                escrowTransactions.push(dataWithoutConfirmationPin);
+    
             }
+            return {status: 200, data: escrowTransactions};
+            
         } else {
             return {status: 404, data: 'transactions not found'};
         }
@@ -351,22 +388,89 @@ async function requestToPay(data){
     
    }
 
+
+
+   const getTransactionID = async(referenceId) => { 
+    try {
+      const q = query(collection(db, "escrowTransactions"), where("referenceId", "==", referenceId));
+
+      const querySnapshot = await getDocs(q);
+      const escrowTransactions = [];
+      if (!querySnapshot.empty) {
+        for (const docRef of querySnapshot.docs) {
+          const transactionData = docRef.data();
+           // Get seller details
+          const sellerQ = query(collection(db, 'users'), where('uid', '==', transactionData.sellerId));
+          const sellerSnapshot = await getDocs(sellerQ);
+          
+          const sellerData = sellerSnapshot.empty ? {} : sellerSnapshot.docs[0].data();
+
+          // Get buyer details
+          const buyerQ = query(collection(db, 'users'), where('uid', '==', transactionData.buyerId));
+          const buyerSnapshot = await getDocs(buyerQ);
+          const buyerData = buyerSnapshot.empty ? {} : buyerSnapshot.docs[0].data();
+
+          const transactionDetails = {
+            ...transactionData,
+            sellerData: sellerData,
+            buyerData: buyerData,
+          };
+          console.log(transactionDetails)
+          const { confirmationPin, ...dataWithoutConfirmationPin } = transactionDetails;
+            // dataWithoutConfirmationPin.sellerName = ;
+            escrowTransactions.push(dataWithoutConfirmationPin);
+
+        }
+        return {status: 200, data: escrowTransactions};
+        
+    } else {
+        return {status: 404, data: 'transactions not found'};
+    }
+    } catch (error) {
+      console.log(error)
+      return{status: 500, data: 'Unknown error has occured'};
+    }
+
+
+}
+
+
    const getAllDelivererTransactions = async(uid) => { 
     try {
       const q = query(collection(db, "escrowTransactions"), where("deliveryId", "==", uid));
 
       const querySnapshot = await getDocs(q);
+      const escrowTransactions = [];
       if (!querySnapshot.empty) {
-        if (!querySnapshot.empty) {
-            const escrowTransactions = [];
-            querySnapshot.forEach((doc) => {
-                const { confirmationPin, ...dataWithoutConfirmationPin } = doc.data();
-                escrowTransactions.push(dataWithoutConfirmationPin);
-            });
-            // const transData = querySnapshot.docs.;
-            // console.log(userDoc.docs)
-            return {status: 200, data: escrowTransactions};
+        for (const docRef of querySnapshot.docs) {
+          const transactionData = docRef.data();
+           // Get seller details
+          const sellerQ = query(collection(db, 'users'), where('uid', '==', transactionData.sellerId));
+          const sellerSnapshot = await getDocs(sellerQ);
+          
+          const sellerData = sellerSnapshot.empty ? {} : sellerSnapshot.docs[0].data();
+
+          // Get buyer details
+          const buyerQ = query(collection(db, 'users'), where('uid', '==', transactionData.buyerId));
+          const buyerSnapshot = await getDocs(buyerQ);
+          const buyerData = buyerSnapshot.empty ? {} : buyerSnapshot.docs[0].data();
+
+          const transactionDetails = {
+            ...transactionData,
+            sellerData: sellerData,
+            buyerData: buyerData,
+          };
+          console.log(transactionDetails)
+          const { confirmationPin, ...dataWithoutConfirmationPin } = transactionDetails;
+            // dataWithoutConfirmationPin.sellerName = ;
+            escrowTransactions.push(dataWithoutConfirmationPin);
+
         }
+        
+          
+    
+            return {status: 200, data: escrowTransactions};
+
     } else {
         return {status: 404, data: 'transactions not found'};
     }
@@ -467,7 +571,7 @@ const AssignDelivery = async (data) => {
             
         } catch (error) {
             console.log(error.response?.data)
-            return {message: error.response?.data?.message, status: 500}
+            return {status: 200, data: '5000'}
         }
     
       }
@@ -476,6 +580,7 @@ const AssignDelivery = async (data) => {
     getTransactionStatus,
     getAllBuyerTransactions,
     getAllSellerTransactions,
+    getTransactionID,
     getAllDelivererTransactions,
     getActiveTransaction,
     getAllTransactions,

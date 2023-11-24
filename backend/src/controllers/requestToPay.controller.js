@@ -1,4 +1,4 @@
-const {requestToPay, getTransactionStatus, getAllBuyerTransactions, getAllSellerTransactions, getActiveTransaction, getAllTransactions, getMostFrequentLocation, getCreditedAmounts, getDebitedAmounts, getTotalCommisions, AssignDelivery, getAccountBalance, getAllDelivererTransactions} = require('../services/requestToPay.service')
+const {requestToPay, getTransactionStatus, getAllBuyerTransactions, getAllSellerTransactions, getActiveTransaction, getAllTransactions, getMostFrequentLocation, getCreditedAmounts, getDebitedAmounts, getTotalCommisions, AssignDelivery, getAccountBalance, getAllDelivererTransactions, getTransactionID} = require('../services/requestToPay.service')
 
 async function requestToPayController(req, res, next) {
     try {
@@ -21,6 +21,15 @@ async function getAllBuyerTransactionsController(req, res, next) {
     const uid = req.query.uid;
     try {
         res.json(await getAllBuyerTransactions(uid));
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function getTransactionIDController(req, res, next) {
+    const referenceId = req.query.referenceId;
+    try {
+        res.json(await getTransactionID(referenceId));
     } catch (err) {
         next(err);
     }
@@ -114,6 +123,7 @@ module.exports ={
     getAllSellerTransactionsController,
     getAllDelivererTransactionsController,
     getActiveTransactionsController,
+    getTransactionIDController,
     getAllTransactionsController,
     getMostFrequentLocationController,
     getDebitedAmountsController,
