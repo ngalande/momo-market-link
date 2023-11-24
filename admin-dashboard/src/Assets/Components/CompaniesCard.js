@@ -14,8 +14,8 @@ const statuses = {
 const clients = [
   {
     id: 1,
-    name: 'Airtel',
-    imageUrl: AirtelLogo,
+    name: 'MTN',
+    imageUrl: MTNLogo,
     lastInvoice: { date: 'December 13, 2022', dateTime: '2022-12-13', amount: '$2,000.00', status: 'Overdue' },
   },
   {
@@ -26,8 +26,8 @@ const clients = [
   },
   {
     id: 3,
-    name: 'Zamtel',
-    imageUrl: ZamtelLogo,
+    name: 'MTN',
+    imageUrl: MTNLogo,
     lastInvoice: { date: 'January 23, 2023', dateTime: '2023-01-23', amount: '$7,600.00', status: 'Paid' },
   },
   {
